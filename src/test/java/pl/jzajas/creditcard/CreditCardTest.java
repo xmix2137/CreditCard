@@ -1,7 +1,6 @@
 package pl.jzajas.creditcard;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -87,7 +86,6 @@ public class CreditCardTest {
         CreditCard card = new CreditCard();
         card.assignCredit(BigDecimal.valueOf(1000));
         card.pay(BigDecimal.valueOf(900));
-
 
         assertThrows(
                 NotEnoughMoneyException.class,
