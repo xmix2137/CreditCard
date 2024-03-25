@@ -1,2 +1,14 @@
-package pl.jzajas.ecommerce;public class AppTest {
+package pl.jzajas.ecommerce;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+
+@SpringBootTest
+public class AppTest {
+
+    @Test
+    void contextLoads() {
+
+    }
 }

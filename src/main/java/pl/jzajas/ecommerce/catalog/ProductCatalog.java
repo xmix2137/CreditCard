@@ -41,7 +41,7 @@ public class ProductCatalog {
     public void changePrice(String id, BigDecimal price) {
 
         Product loaded = this.getProductBy(id);
-        loaded.changePrice(newPrice);
+        //loaded.changePrice(newPrice);
 
     }
 }
