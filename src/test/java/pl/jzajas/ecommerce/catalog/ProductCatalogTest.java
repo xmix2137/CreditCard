@@ -57,9 +57,9 @@ public class ProductCatalogTest {
         Product loaded = catalog.getProductBy(id);
 
         assertThat(BigDecimal.valueOf(10.10)).isEqualTo(loaded.getPrice());
-
-
     }
 
-
+    private static ProductCatalog thereIsProductCatalog() {
+        return new ProductCatalog();
+    }
 }

@@ -45,6 +45,7 @@ public class CreditCard {
     }
 
     private boolean canAfford(BigDecimal money) {
+
         return this.balance.subtract(money).compareTo(BigDecimal.ZERO) > 0;
     }
 }

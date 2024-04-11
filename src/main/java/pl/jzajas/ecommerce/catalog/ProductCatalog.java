@@ -36,12 +36,13 @@ public class ProductCatalog {
                 .filter(product -> product.getId().equals(id))
                 .findFirst()
                 .get();
+
     }
 
     public void changePrice(String id, BigDecimal price) {
 
         Product loaded = this.getProductBy(id);
-        //loaded.changePrice(newPrice);
+        loaded.changePrice(price);
 
     }
 }
