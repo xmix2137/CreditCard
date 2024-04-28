@@ -1,5 +1,4 @@
-package pl.jzajas.creditcard;
+package pl.jkanclerz.creditcard;
 
-public class CreditBelowThresholdException extends IllegalStateException{
-
+public class CreditBelowThresholdException extends IllegalStateException {
 }

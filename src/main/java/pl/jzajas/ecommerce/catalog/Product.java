@@ -1,4 +1,4 @@
-package pl.jzajas.ecommerce.catalog;
+package pl.jkanclerz.ecommerce.catalog;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -8,7 +8,6 @@ public class Product {
     private final String name;
     private final String description;
     private BigDecimal price;
-
 
     public Product(UUID id, String name, String description) {
         this.id = id.toString();
@@ -31,9 +30,5 @@ public class Product {
 
     public String getName() {
         return name;
-    }
-
-    public String getDescription() {
-        return description;
     }
 }

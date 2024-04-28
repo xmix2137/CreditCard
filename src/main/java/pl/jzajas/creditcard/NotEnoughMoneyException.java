@@ -1,4 +1,4 @@
-package pl.jzajas.creditcard;
+package pl.jkanclerz.creditcard;
 
-public class NotEnoughMoneyException extends IllegalStateException{
+public class NotEnoughMoneyException extends IllegalStateException {
 }

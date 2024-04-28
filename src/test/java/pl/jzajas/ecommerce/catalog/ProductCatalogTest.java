@@ -1,29 +1,28 @@
-package pl.jzajas.ecommerce.catalog;
+package pl.jkanclerz.ecommerce.catalog;
 
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
 
 public class ProductCatalogTest {
 
     @Test
     void itListAvailableProducts() {
-
-        ProductCatalog catalog = new ProductCatalog();
+        ProductCatalog catalog = thereIsProductCatalog();
 
         List<Product> products = catalog.allProducts();
 
         assert products.isEmpty();
-
     }
+
+
+
     @Test
     void itAllowsToAddProduct() {
-
-        ProductCatalog catalog = new ProductCatalog();
+        ProductCatalog catalog = thereIsProductCatalog();
 
         catalog.addProduct("Lego set 8083", "Nice one");
         List<Product> products = catalog.allProducts();
@@ -32,26 +31,20 @@ public class ProductCatalogTest {
                 .hasSize(1);
     }
 
-
     @Test
-    void itLoadsSingleProductsId() {
-
-        ProductCatalog catalog = new ProductCatalog();
-        String id = catalog.addProduct("Lego set 80808", "Nice one");
-
+    void itLoadsSingleProductById() {
+        ProductCatalog catalog = thereIsProductCatalog();
+        String id = catalog.addProduct("Lego set 8083", "Nice one");
 
         Product loaded = catalog.getProductBy(id);
 
         assertThat(id).isEqualTo(loaded.getId());
-
     }
 
     @Test
-    void itAllowsToChangePrice() {
-
-        ProductCatalog catalog = new ProductCatalog();
-        String id = catalog.addProduct("Lego set 80808", "Nice one");
-
+    void itAllowsChangePrice() {
+        ProductCatalog catalog = thereIsProductCatalog();
+        String id = catalog.addProduct("Lego set 8083", "Nice one");
 
         catalog.changePrice(id, BigDecimal.valueOf(10.10));
         Product loaded = catalog.getProductBy(id);
@@ -60,6 +53,6 @@ public class ProductCatalogTest {
     }
 
     private static ProductCatalog thereIsProductCatalog() {
-        return new ProductCatalog();
+        return new ProductCatalog(new ArrayListProductStorage());
     }
 }
