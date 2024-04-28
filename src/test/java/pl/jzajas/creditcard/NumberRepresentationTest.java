@@ -1,4 +1,4 @@
-package pl.jkanclerz.creditcard;
+package pl.jzajas.creditcard;
 
 import org.junit.jupiter.api.Test;
 

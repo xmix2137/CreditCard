@@ -1,4 +1,4 @@
-package pl.jkanclerz.ecommerce.catalog;
+package pl.jzajas.ecommerce.catalog;
 
 import java.util.ArrayList;
 import java.util.Collections;

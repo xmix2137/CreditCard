@@ -1,4 +1,4 @@
-package pl.jkanclerz.ecommerce;
+package pl.jzajas.ecommerce;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

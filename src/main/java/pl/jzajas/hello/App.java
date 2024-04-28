@@ -1,4 +1,4 @@
-package pl.jkanclerz.hello;
+package pl.jzajas.hello;
 
 import java.util.Collections;
 

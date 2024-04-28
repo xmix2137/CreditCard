@@ -1,10 +1,10 @@
-package pl.jkanclerz.ecommerce;
+package pl.jzajas.ecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import pl.jkanclerz.ecommerce.catalog.ArrayListProductStorage;
-import pl.jkanclerz.ecommerce.catalog.ProductCatalog;
+import pl.jzajas.ecommerce.catalog.ArrayListProductStorage;
+import pl.jzajas.ecommerce.catalog.ProductCatalog;
 
 import java.math.BigDecimal;
 

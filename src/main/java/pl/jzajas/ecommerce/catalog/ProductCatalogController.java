@@ -1,4 +1,4 @@
-package pl.jkanclerz.ecommerce.catalog;
+package pl.jzajas.ecommerce.catalog;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
