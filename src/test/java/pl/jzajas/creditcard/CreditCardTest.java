@@ -1,88 +1,86 @@
 package pl.jzajas.creditcard;
-import java.math.BigDecimal;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
 
 public class CreditCardTest {
     @Test
-    void itAssignCredit(){
-
-        // Arrange
-
-        var card = new CreditCard();
-
+    void itAllowsToAssignCredit() {
+        //Arrange
+        CreditCard card = new CreditCard();
         //Act
-
         card.assignCredit(BigDecimal.valueOf(1000));
-
-        // Assert
+        //Assert
         assertEquals(
-                BigDecimal.valueOf(1000),
+            BigDecimal.valueOf(1000),
+            card.getBalance()
+        );
+    }
+
+    @Test
+    void itAllowsToAssignCreditV2() {
+        //Arrange
+        CreditCard card = new CreditCard();
+        //Act
+        card.assignCredit(BigDecimal.valueOf(1200));
+        //Assert
+        assert BigDecimal.valueOf(1200).equals(card.getBalance());
+        assertEquals(
+                BigDecimal.valueOf(1200),
                 card.getBalance()
         );
     }
 
     @Test
-    void itAssignCreditV2(){
-
-        // Arrange
-
-        var card = new CreditCard();
-
-        //Act
-
-        card.assignCredit(BigDecimal.valueOf(1500));
-
-        // Assert
-
-        assert BigDecimal.valueOf(1500).equals(card.getBalance());
+    void itDenyCreditBelowThresholdV1() {
+        CreditCard card = new CreditCard();
+        try {
+            card.assignCredit(BigDecimal.valueOf(50));
+            fail("Should throw exception");
+        } catch (CreditBelowThresholdException e) {
+            assertTrue(true);
+        }
     }
 
     @Test
-    void itDenyCreditBelowThresholdV1(){
-
-        var card = new CreditCard();
-
-        try{
-            card.assignCredit(BigDecimal.valueOf(50));
-            fail("Should throw exception");
-        }catch (CreditBelowThresholdException e){
-                assertTrue(true);
-        }
-
-    }
-
-    void itDenyCreditBelowThresholdV2(){
-        var card = new CreditCard();
+    void itDenyCreditBelowThresholdV2() {
+        CreditCard card = new CreditCard();
+        //python // lambda x: x + 2
+        //java // (x) -> x + 2
 
         assertThrows(
                 CreditBelowThresholdException.class,
                 () -> card.assignCredit(BigDecimal.valueOf(10))
         );
-
-        try{
-            card.assignCredit(BigDecimal.valueOf(50));
-            fail("Should throw exception");
-        }catch (CreditBelowThresholdException e){
-            assertTrue(true);
-        }
-
     }
 
-
     @Test
-    void itDenyCreditReassingment(){
+    void itDenyCreditReassignment() {
         CreditCard card = new CreditCard();
         card.assignCredit(BigDecimal.valueOf(1000));
         assertThrows(
-                CreditCantBeReassingmentException.class,
+                CreditAlreadyAssignedException.class,
                 () -> card.assignCredit(BigDecimal.valueOf(1200))
         );
     }
 
     @Test
-    void itDenyWhenNotSufficentFounds() {
+    void itAllowsToPayForSomething() {
+        CreditCard card = new CreditCard();
+        card.assignCredit(BigDecimal.valueOf(1000));
+
+        card.pay(BigDecimal.valueOf(900));
+
+        assertEquals(
+                BigDecimal.valueOf(100),
+                card.getBalance()
+        );
+    }
+
+    @Test
+    void itDenyWhenNotSufficientFounds() {
         CreditCard card = new CreditCard();
         card.assignCredit(BigDecimal.valueOf(1000));
         card.pay(BigDecimal.valueOf(900));
@@ -91,8 +89,7 @@ public class CreditCardTest {
                 NotEnoughMoneyException.class,
                 () -> card.pay(BigDecimal.valueOf(200))
         );
-
-
     }
+
 
 }
