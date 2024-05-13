@@ -29,7 +29,42 @@ public class SalesTest {
 
     @Test
     void itAllowsTOAddProductToCart() {
+        String productId = thereIsProduct("example", BigDecimal.valueOf(10));
+        String customerId = thereIsExampleCustomer("Kuba");
+        SalesFacade sales = thereIsSalesFacade();
 
+        sales.addToCart(customerId, productId);
+        Offer offer = sales.getCurrentOffer(customerId);
+
+        assertEquals(1, offer.getItemsCount());
+        assertEquals(BigDecimal.valueOf(10), offer.getTotal());
+
+    }
+
+    @Test
+    void itDistinguishCartsByCustomer(){
+        String productA = thereIsProduct("example a", BigDecimal.valueOf(10));
+        String productB = thereIsProduct("example b", BigDecimal.valueOf(10));
+
+        String customerA = thereIsExampleCustomer("Kuba");
+        String customerB = thereIsExampleCustomer("John");
+
+        SalesFacade sales = thereIsSalesFacade();
+
+        sales.addToCart(customerA, productA);
+        sales.addToCart(customerB, productB);
+        Offer offerA = sales.getCurrentOffer(customerA);
+        Offer offerB = sales.getCurrentOffer(customerB);
+
+        assertEquals(1, offerA.getItemsCount());
+        assertEquals(BigDecimal.valueOf(10), offerA.getTotal());
+
+        assertEquals(1, offerB.getItemsCount());
+        assertEquals(BigDecimal.valueOf(10), offerB.getTotal());
+    }
+
+    private String thereIsProduct(String productId, BigDecimal price) {
+        return null;
     }
 
     @Test
@@ -39,6 +74,11 @@ public class SalesTest {
 
     @Test
     void itAllowsToAcceptOffer () {
+        String productId = thereIsProduct("example", BigDecimal.valueOf(10));
+        String customerId = thereIsExampleCustomer("Kuba");
+        SalesFacade sales = thereIsSalesFacade();
 
+        sales.addToCart(customerId, productId);
+        ReservationDetails reservationDetails =
     }
 }
